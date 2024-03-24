@@ -19,8 +19,9 @@ jobs:
       - name: Build your React app (adjust if needed)
         run: npm run build  # Replace with your build command
 
-      - name: Deploy to GitHub Pages
-        uses: actions/upload-artifact@v2
+      - name: Deploy website to gh-pages
+        uses: actions/upload-directory@v3
         with:
-          name: gh-pages
-          path: ./dist
+          src: 'dist/**'  # Assuming your build script outputs to a build folder
+          dest: '.'  # Replace with desired subfolder name (e.g., 'website')
+          artifact_name: website  # Optional artifact name
