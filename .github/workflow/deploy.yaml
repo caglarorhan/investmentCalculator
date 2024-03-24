@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 16 (adjust if needed)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Build your React app (adjust if needed)
+        run: npm run build  # Replace with your build command
+
+      - name: Deploy to GitHub Pages
+        uses: actions/upload-artifact@v2
+        with:
+          name: gh-pages
+          path: ./dist
